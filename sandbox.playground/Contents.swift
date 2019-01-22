@@ -172,56 +172,56 @@ struct Line: Drawable {
 
 /* Код #5 */
 
-func drawACopy<T: Drawable>(local: T) {
-    local.draw()
-}
-drawACopy(local: Point(x: 10, y: 10))
-drawACopy(local: Line(x1: 0, x2: 10, y1: 0, y2: 10))
+//func drawACopy<T: Drawable>(local: T) {
+//    local.draw()
+//}
+//drawACopy(local: Point(x: 10, y: 10))
+//drawACopy(local: Line(x1: 0, x2: 10, y1: 0, y2: 10))
 
 /* PSEUDO CODE */
 // MARK: Create type-specific version of method
 
-func drawACopyOfAPoint(local: Point) {
-    local.draw()
-}
-
-func drawACopyOfALine(local: Line) {
-    local.draw()
-}
-drawACopyOfAPoint(local: Point(x: 10, y: 10))
-drawACopyOfALine(local: Line(x1: 0, x2: 10, y1: 0, y2: 10))
+//func drawACopyOfAPoint(local: Point) {
+//    local.draw()
+//}
+//
+//func drawACopyOfALine(local: Line) {
+//    local.draw()
+//}
+//drawACopyOfAPoint(local: Point(x: 10, y: 10))
+//drawACopyOfALine(local: Line(x1: 0, x2: 10, y1: 0, y2: 10))
 
 // MARK: aggressive compiler optimization
 
-do {
-    let local = Point(x: 10, y: 10)
-    local.draw()
-}
-
-do {
-    let local = Line(x1: 0, x2: 10, y1: 0, y2: 10)
-    local.draw()
-}
+//do {
+//    let local = Point(x: 10, y: 10)
+//    local.draw()
+//}
+//
+//do {
+//    let local = Line(x1: 0, x2: 10, y1: 0, y2: 10)
+//    local.draw()
+//}
 
 // MARK: or even
 
-Point(x: 10, y: 10).draw()
-Line(x1: 0, x2: 10, y1: 0, y2: 10).draw()
+//Point(x: 10, y: 10).draw()
+//Line(x1: 0, x2: 10, y1: 0, y2: 10).draw()
 
 /* END OF PSEUDO CODE */
 
 /* Код #6 */
 
-struct GenericPair<T: Drawable> {
-    init(_ f: T, _ s: T) {
-        first = f; second = s
-    }
-    var first, second: T
-}
+//struct GenericPair<T: Drawable> {
+//    init(_ f: T, _ s: T) {
+//        first = f; second = s
+//    }
+//    var first, second: T
+//}
 
 // NOTE:  Now swift compiler know explicitly, that this is a pair of instance with the same type, because `T` can't be different.
 
-var pair = GenericPair(Line(x1: 0, x2: 10, y1: 0, y2: 10), Line(x1: 10, x2: 0, y1: 10, y2: 0))
+//var pair = GenericPair(Line(x1: 0, x2: 10, y1: 0, y2: 10), Line(x1: 10, x2: 0, y1: 10, y2: 0))
 
 // NOTE: type doesn't change at runtime
 
@@ -229,6 +229,6 @@ var pair = GenericPair(Line(x1: 0, x2: 10, y1: 0, y2: 10), Line(x1: 10, x2: 0, y
 
 // MARK: STACK ALLOCATION!
 
-MemoryLayout.size(ofValue: pair)
-MemoryLayout.size(ofValue: pair.first)
-MemoryLayout.size(ofValue: pair.second)
+//MemoryLayout.size(ofValue: pair)
+//MemoryLayout.size(ofValue: pair.first)
+//MemoryLayout.size(ofValue: pair.second)
